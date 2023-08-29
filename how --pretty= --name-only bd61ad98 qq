@@ -1,0 +1,202 @@
+[33mcommit 2a0a313ced15d7982543405948b49460982dd335[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Andrew Toth <telepresent2@gmail.com>
+Date:   Mon Aug 28 18:32:39 2023 -0700
+
+    Made some changes/accidentally leaked SSH key on previous push
+
+[1mdiff --git a/.gitignore b/.gitignore[m
+[1mindex 7939cc1..8672028 100644[m
+[1m--- a/.gitignore[m
+[1m+++ b/.gitignore[m
+[36m@@ -53,3 +53,5 @@[m [mCATKIN_IGNORE[m
+ #ignore venv[m
+ env/[m
+ jetbot/[m
+[32m+[m[32m.ssh/[m
+[32m+[m[32m.ipynb_checkpoints/[m
+[1mdiff --git a/.ipynb_checkpoints/Environment Setup-checkpoint.ipynb b/.ipynb_checkpoints/Environment Setup-checkpoint.ipynb[m
+[1mindex f60e0ca..70b76be 100644[m
+[1m--- a/.ipynb_checkpoints/Environment Setup-checkpoint.ipynb[m	
+[1m+++ b/.ipynb_checkpoints/Environment Setup-checkpoint.ipynb[m	
+[36m@@ -10,36 +10,9 @@[m
+   },[m
+   {[m
+    "cell_type": "code",[m
+[31m-   "execution_count": 1,[m
+[32m+[m[32m   "execution_count": null,[m
+    "metadata": {},[m
+[31m-   "outputs": [[m
+[31m-    {[m
+[31m-     "name": "stderr",[m
+[31m-     "output_type": "stream",[m
+[31m-     "text": [[m
+[31m-      "sudo: no tty present and no askpass program specified\n",[m
+[31m-      "sudo: no tty present and no askpass program specified\n",[m
+[31m-      "sudo: no tty present and no askpass program specified\n",[m
+[31m-      "(23) Failed writing body\n"[m
+[31m-     ][m
+[31m-    },[m
+[31m-    {[m
+[31m-     "ename": "CalledProcessError",[m
+[31m-     "evalue": "Command 'b'sudo python3 -m pip install --user --upgrade pip\\nsudo apt install python3-venv\\ntype -p curl >/dev/null || (sudo apt update && sudo apt install curl -y)\\ncurl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \\\\\\n&& sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \\\\\\n&& echo \"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main\" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \\\\\\n&& sudo apt update \\\\\\n&& sudo apt install gh -y\\n'' returned non-zero exit status 1.",[m
+[31m-     "output_type": "error",[m
+[31m-     "traceback": [[m
+[31m-      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",[m
+[31m-      "\u001b[0;31mCalledProcessError\u001b[0m                        Traceback (most recent call last)",[m
+[31m-      "\u001b[0;32m<ipython-input-1-d627ffa7e849>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mget_ipython\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mrun_cell_magic\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'bash'\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m''\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m'sudo python3 -m pip install --user --upgrade pip\\nsudo apt install python3-venv\\ntype -p curl >/dev/null || (sudo apt update && sudo apt install curl -y)\\ncurl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \\\\\\n&& sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \\\\\\n&& echo \"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main\" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \\\\\\n&& sudo apt update \\\\\\n&& sudo apt install gh -y\\n'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",[m
+[31m-      "\u001b[0;32m/usr/local/lib/python3.6/dist-packages/IPython/core/interactiveshell.py\u001b[0m in \u001b[0;36mrun_cell_magic\u001b[0;34m(self, magic_name, line, cell)\u001b[0m\n\u001b[1;32m   2350\u001b[0m             \u001b[0;32mwith\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mbuiltin_trap\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   2351\u001b[0m                 \u001b[0margs\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;34m(\u001b[0m\u001b[0mmagic_arg_s\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mcell\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m-> 2352\u001b[0;31m                 \u001b[0mresult\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mfn\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m*\u001b[0m\u001b[0margs\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m**\u001b[0m\u001b[0mkwargs\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m   2353\u001b[0m             \u001b[0;32mreturn\u001b[0m \u001b[0mresult\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   2354\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n",[m
+[31m-      "\u001b[0;32m/usr/local/lib/python3.6/dist-packages/IPython/core/magics/script.py\u001b[0m in \u001b[0;36mnamed_script_magic\u001b[0;34m(line, cell)\u001b[0m\n\u001b[1;32m    140\u001b[0m             \u001b[0;32melse\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    141\u001b[0m                 \u001b[0mline\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mscript\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 142\u001b[0;31m             \u001b[0;32mreturn\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mshebang\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mline\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mcell\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    143\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    144\u001b[0m         \u001b[0;31m# write a basic docstring:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",[m
+[31m-      "\u001b[0;32m</usr/local/lib/python3.6/dist-packages/decorator.py:decorator-gen-103>\u001b[0m in \u001b[0;36mshebang\u001b[0;34m(self, line, cell)\u001b[0m\n",[m
+[31m-      "\u001b[0;32m/usr/local/lib/python3.6/dist-packages/IPython/core/magic.py\u001b[0m in \u001b[0;36m<lambda>\u001b[0;34m(f, *a, **k)\u001b[0m\n\u001b[1;32m    185\u001b[0m     \u001b[0;31m# but it's overkill for just that one bit of state.\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    186\u001b[0m     \u001b[0;32mdef\u001b[0m \u001b[0mmagic_deco\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0marg\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 187\u001b[0;31m         \u001b[0mcall\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;32mlambda\u001b[0m \u001b[0mf\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m*\u001b[0m\u001b[0ma\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m**\u001b[0m\u001b[0mk\u001b[0m\u001b[0;34m:\u001b[0m \u001b[0mf\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m*\u001b[0m\u001b[0ma\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m**\u001b[0m\u001b[0mk\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    188\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    189\u001b[0m         \u001b[0;32mif\u001b[0m \u001b[0mcallable\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0marg\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",[m
+[31m-      "\u001b[0;32m/usr/local/lib/python3.6/dist-packages/IPython/core/magics/script.py\u001b[0m in \u001b[0;36mshebang\u001b[0;34m(self, line, cell)\u001b[0m\n\u001b[1;32m    243\u001b[0m             \u001b[0msys\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mstderr\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mflush\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    244\u001b[0m         \u001b[0;32mif\u001b[0m \u001b[0margs\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mraise_error\u001b[0m \u001b[0;32mand\u001b[0m \u001b[0mp\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mreturncode\u001b[0m\u001b[0;34m!=\u001b[0m\u001b[0;36m0\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 245\u001b[0;31m             \u001b[0;32mraise\u001b[0m \u001b[0mCalledProcessError\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mp\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mreturncode\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mcell\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0moutput\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0mout\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mstderr\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0merr\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    246\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    247\u001b[0m     \u001b[0;32mdef\u001b[0m \u001b[0m_run_script\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mself\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mp\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mcell\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mto_close\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",[m
+[31m-      "\u001b[0;31mCalledProcessError\u001b[0m: Command 'b'sudo python3 -m pip install --user --upgrade pip\\nsudo apt install python3-venv\\ntype -p curl >/dev/null || (sudo apt update && sudo apt install curl -y)\\ncurl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \\\\\\n&& sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \\\\\\n&& echo \"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main\" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \\\\\\n&& sudo apt update \\\\\\n&& sudo apt install gh -y\\n'' returned non-zero exit status 1."[m
+[31m-     ][m
+[31m-    }[m
+[31m-   ],[m
+[32m+[m[32m   "outputs": [],[m
+    "source": [[m
+     "%%bash\n",[m
+     "sudo python3 -m pip install --user --upgrade pip\n",[m
+[36m@@ -158,7 +131,10 @@[m
+     "CATKIN_IGNORE\n",[m
+     "\n",[m
+     "#ignore venv\n",[m
+[31m-    "env/"[m
+[32m+[m[32m    "env/\n",[m
+[32m+[m[32m    "jetbot/\n",[m
+[32m+[m[32m    ".ssh/\n",[m
+[32m+[m[32m    ".ipynb_checkpoints/"[m
+    ][m
+   },[m
+   {[m
+[36m@@ -242,29 +218,54 @@[m
+   },[m
+   {[m
+    "cell_type": "code",[m
+[31m-   "execution_count": 2,[m
+[32m+[m[32m   "execution_count": null,[m
+    "metadata": {},[m
+[31m-   "outputs": [[m
+[31m-    {[m
+[31m-     "name": "stderr",[m
+[31m-     "output_type": "stream",[m
+[31m-     "text": [[m
+[31m-      "bash: line 1: cd: mvp1/: No such file or directory\n"[m
+[31m-     ][m
+[31m-    }[m
+[31m-   ],[m
+[32m+[m[32m   "outputs": [],[m
+    "source": [[m
+     "%%bash\n",[m
+     "cd mvp1/\n",[m
+     "source env/bin/activate"[m
+    ][m
+   },[m
+[32m+[m[32m  {[m
+[32m+[m[32m   "cell_type": "markdown",[m
+[32m+[m[32m   "metadata": {},[m
+[32m+[m[32m   "source": [[m
+[32m+[m[32m    "When the code is at a good place, it's a good idea to upload it to github. Follow the steps below."[m
+[32m+[m[32m   ][m
+[32m+[m[32m  },[m
+   {[m
+    "cell_type": "code",[m
+    "execution_count": null,[m
+    "metadata": {},[m
+    "outputs": [],[m
+[31m-   "source": [][m
+[32m+[m[32m   "source": [[m
+[32m+[m[32m    "%%bash\n",[m
+[32m+[m[32m    "gh auth login\n",[m
+[32m+[m[32m    "gh repo create mvp1 --public\n"[m
+[32m+[m[32m   ][m
+[32m+[m[32m  },[m
+[32m+[m[32m  {[m
+[32m+[m[32m   "cell_type": "markdown",[m
+[32m+[m[32m   "metadata": {},[m
+[32m+[m[32m   "source": [[m
+[32m+[m[32m    "Then give up on the Github CLI and do it the old-fashioned way"[m
+[32m+[m[32m   ][m
+[32m+[m[32m  },[m
+[32m+[m[32m  {[m
+[32m+[m[32m   "cell_type": "code",[m
+[32m+[m[32m   "execution_count": null,[m
+[32m+[m[32m   "metadata": {},[m
+[32m+[m[32m   "outputs": [],[m
+[32m+[m[32m   "source": [[m
+[32m+[m[32m    "%%bash\n",[m
+[32m+[m[32m    "git init\n",[m
+[32m+[m[32m    "git add .\n",[m
+[32m+[m[32m    "git config --global user.email telepresent2@gmail.com\n",[m
+[32m+[m[32m    "git config --global user.name \"Andrew Toth\"\n",[m
+[32m+[m[32m    "git commit -m \"commit message\"\n",[m
+[32m+[m[32m    "git push -u origin main\n"[m
+[32m+[m[32m   ][m
+   }[m
+  ],[m
+  "metadata": {[m
+[1mdiff --git a/.ssh/id_ed25519 b/.ssh/id_ed25519[m
+[1mdeleted file mode 100644[m
+[1mindex df44d32..0000000[m
+[1m--- a/.ssh/id_ed25519[m
+[1m+++ /dev/null[m
+[36m@@ -1,7 +0,0 @@[m
+[31m------BEGIN OPENSSH PRIVATE KEY-----[m
+[31m-b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW[m
+[31m-QyNTUxOQAAACB85YjrnRobmjuZURBVRQgxmoAoICtQhfDp7kPQ3/LqgQAAAIgK1GSgCtRk[m
+[31m-oAAAAAtzc2gtZWQyNTUxOQAAACB85YjrnRobmjuZURBVRQgxmoAoICtQhfDp7kPQ3/LqgQ[m
+[31m-AAAEDn+aqxhJpNpQARnoEbQ+7Eidc+wrghmKRdD6D53XUIrXzliOudGhuaO5lREFVFCDGa[m
+[31m-gCggK1CF8OnuQ9Df8uqBAAAAAAECAwQF[m
+[31m------END OPENSSH PRIVATE KEY-----[m
+[1mdiff --git a/.ssh/id_ed25519.pub b/.ssh/id_ed25519.pub[m
+[1mdeleted file mode 100644[m
+[1mindex b28291d..0000000[m
+[1m--- a/.ssh/id_ed25519.pub[m
+[1m+++ /dev/null[m
+[36m@@ -1 +0,0 @@[m
+[31m-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHzliOudGhuaO5lREFVFCDGagCggK1CF8OnuQ9Df8uqB [m
+[1mdiff --git a/Environment Setup.ipynb b/Environment Setup.ipynb[m
+[1mindex f62a112..70b76be 100644[m
+[1m--- a/Environment Setup.ipynb[m	
+[1m+++ b/Environment Setup.ipynb[m	
+[36m@@ -131,7 +131,10 @@[m
+     "CATKIN_IGNORE\n",[m
+     "\n",[m
+     "#ignore venv\n",[m
+[31m-    "env/"[m
+[32m+[m[32m    "env/\n",[m
+[32m+[m[32m    "jetbot/\n",[m
+[32m+[m[32m    ".ssh/\n",[m
+[32m+[m[32m    ".ipynb_checkpoints/"[m
+    ][m
+   },[m
+   {[m
+[36m@@ -241,6 +244,28 @@[m
+     "gh auth login\n",[m
+     "gh repo create mvp1 --public\n"[m
+    ][m
+[32m+[m[32m  },[m
+[32m+[m[32m  {[m
+[32m+[m[32m   "cell_type": "markdown",[m
+[32m+[m[32m   "metadata": {},[m
+[32m+[m[32m   "source": [[m
+[32m+[m[32m    "Then give up on the Github CLI and do it the old-fashioned way"[m
+[32m+[m[32m   ][m
+[32m+[m[32m  },[m
+[32m+[m[32m  {[m
+[32m+[m[32m   "cell_type": "code",[m
+[32m+[m[32m   "execution_count": null,[m
+[32m+[m[32m   "metadata": {},[m
+[32m+[m[32m   "outputs": [],[m
+[32m+[m[32m   "source": [[m
+[32m+[m[32m    "%%bash\n",[m
+[32m+[m[32m    "git init\n",[m
+[32m+[m[32m    "git add .\n",[m
+[32m+[m[32m    "git config --global user.email telepresent2@gmail.com\n",[m
+[32m+[m[32m    "git config --global user.name \"Andrew Toth\"\n",[m
+[32m+[m[32m    "git commit -m \"commit message\"\n",[m
+[32m+[m[32m    "git push -u origin main\n"[m
+[32m+[m[32m   ][m
+   }[m
+  ],[m
+  "metadata": {[m

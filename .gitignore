@@ -53,3 +53,5 @@ CATKIN_IGNORE
 #ignore venv
 env/
 jetbot/
+.ssh/
+.ipynb_checkpoints/
