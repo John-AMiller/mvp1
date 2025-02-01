@@ -1,0 +1,36 @@
+<package format="3">
+  <name>mvp1_ros2_bridge</name>
+  <version>0.0.1</version>
+  <description>
+    A ROS 2 package that bridges /openxr/left_controller (Joy msgs) 
+    and /openxr/HMD (PoseStamped msgs) to Sparkfun-based motors and servo 
+    code from the mvp1 repo, publishing servo angles as /robot/head.
+  </description>
+
+  <!-- You can list yourself as maintainer or author -->
+  <maintainer email="johnamiller056@gmail.com">John Miller</maintainer>
+  <author email="you@example.com">Your Name</author>
+
+  <license>Apache 2.0</license>
+  
+  <buildtool_depend>ament_python</buildtool_depend>
+
+  <!-- Dependencies include rclpy, sensor_msgs, geometry_msgs --> 
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>builtin_interfaces</exec_depend>
+  
+  <!-- If you plan on using launch files, you might add:
+       <exec_depend>launch</exec_depend> 
+       <exec_depend>launch_ros</exec_depend>
+     But that's optional. -->
+
+  <!-- SparkFun or other pip-based libraries do not have corresponding ROS dependencies;
+       you'll need to install them via pip or apt. You seem to have already done most of that based on your setup file but leaving this here just in case -->
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
