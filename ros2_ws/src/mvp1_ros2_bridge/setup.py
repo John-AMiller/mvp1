@@ -23,7 +23,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'motor_node = mvp1_ros2_bridge.motor_node:main',
+            'motor_node = mvp1_ros2_bridge.servo_node:main',
         ],
     },
 )
