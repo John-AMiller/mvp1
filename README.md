@@ -14,6 +14,7 @@ This ROS 2 package bridges the `/openxr/left_controller` and `/openxr/HMD` topi
 # Function
   The node makes subscriptions to:
    - /openxr/left_controller (sensor_msgs/Joy) – The axes[0] and axes[1] values in [-1, +1] are passed into sf_motor.joy_motor_move() to drive the motors in differential drive mode.
-   - /openxr/HMD (geometry_msgs/PoseStamped) – The quaternion in the pose is converted to Euler angles. The yaw/pitch are mapped to [-1..+1], then fed into sf_servo.joy_pan_tilt_abs() to move pan/tilt.
+   - /openxr/HMD (geometry_msgs/PoseStamped) – The quaternion in the pose is converted to Euler angles. The yaw/pitch are mapped to [-1..+1], then fed into sf_servo.joy_pan_tilt_abs() to move pan/tilt. \\
+
   The node publishes:
    - /robot/head (geometry_msgs/PoseStamped) – Contains [0, 0, 0.076] translation and a quaternion derived from (roll=0, pitch, yaw) based on the current servo angles read from sf_servo.read_pan_tilt().
