@@ -1,0 +1,12 @@
+[Unit]
+Description=mvp1_ros2 Node
+After=network.target
+
+[Service]
+Type=simple
+User=jetson
+ExecStart=/bin/bash -c "source /home/jetson/ros2_ws/install/setup.bash && ros2 run mvp1_ros2 motor_servo_node" #might not match your exact path, but it should be close. Just make sure you check that it matches.
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
