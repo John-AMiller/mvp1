@@ -49,7 +49,8 @@ This ROS 2 package bridges the `/openxr/left_controller` and `/openxr/HMD` topi
    - If you see import errors for sparkfun-qwiic-scmd or sparkfun-qwiic-servos, double-check your pip install environment.
 
 ## Auto Start at Boot
-   - On a Jetson Nano (systemd-based environment), you can run the node automatically at boot with a systemd service:
+   - On a Jetson Nano (systemd-based environment), this node can be run automatically at boot with a systemd service.
+   - The file (mvp1_ros2.service) should be placed in the /etc/systemd/system/ folder, so, the path will look like: /etc/systemd/system/mvp1_ros2.service
    - 
 
 ## Customization
